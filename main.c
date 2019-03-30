@@ -30,8 +30,10 @@ int main(void){
 	while(1){}
 }
 void clear_screen(){
-	for(int x=0;x<320;x++){
-		for(int y=0;y<240;y++){
+	int x=0;
+	for(x;x<320;x++){
+		int y=0;
+		for(y;y<240;y++){
 			plot_pixel(x, y, rgb24to16(255,255,255));
 		}
 	}
@@ -56,7 +58,8 @@ void draw_line(int x0, int y0, int x1,int y1, short int color){
 	} else{
 		y_step = -1;
 	}
-	for(int x=x0;x<x1;x++){
+	int x=x0;
+	for(x;x<x1;x++){
 		if (is_steep){
 			plot_pixel(y, x, color);
 		}else{

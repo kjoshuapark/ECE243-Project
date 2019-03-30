@@ -18,8 +18,7 @@ void __attribute__((interrupt)) __cs3_isr_irq(void)
     int address = MPCORE_GIC_CPUIF + ICCIAR;
     int int_ID  = *((int *)address);
 
-	if (int_ID ==
-             INTERVAL_TIMER_IRQ) // check if interrupt is from the Altera timer
+	if (int_ID == INTERVAL_TIMER_IRQ) // check if interrupt is from the Altera timer
         interval_timer_ISR();
     else if (int_ID == KEYS_IRQ) // check if interrupt is from the KEYs
         pushbutton_ISR();

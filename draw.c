@@ -2,6 +2,7 @@
 #include<stdbool.h>
 
 extern volatile int pixel_buffer_start; // global variable
+extern volatile int key_dir;
 
 void clear_screen();
 void plot_pixel(int x, int y, short int line_color);
@@ -10,14 +11,13 @@ void draw_line(int x0, int y0, int x1,int y1, short int color);
 void swap(int*p1 ,int *p2);
 void wait_for_vsync();
 
-int dir=1;
 int y=0;
 void draw(){
 	wait_for_vsync();
 	draw_line(0, y, 319, y, 0xFFFF); // this line is green
-	y=y+dir;
+	y=y+key_dir;
 	if(y<=0||y>=239){
-		dir=-dir;
+		key_dir=-key_dir;
 	}
 	draw_line(0, y, 319, y, 0x07E0); // this line is green
 }

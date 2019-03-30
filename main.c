@@ -51,5 +51,5 @@ void config_KEYs()
 {
     volatile int * KEY_ptr = (int *)KEY_BASE; // pushbutton KEY address
 
-    *(KEY_ptr + 2) = 0x3; // enable interrupts for KEY[1]
+    *(KEY_ptr + 2) = 0xF; // enable interrupts for KEY[1]
 }

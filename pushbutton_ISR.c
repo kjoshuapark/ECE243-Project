@@ -16,6 +16,8 @@ void pushbutton_ISR(void)
     *(KEY_ptr + 3) = press;          // Clear the interrupt
 
     key_dir ^= 1; // Toggle key_dir value
-
+	
+    volatile int * LED_ptr = (int *)LED_BASE; // LED address
+	 *(LED_ptr) = press;
     return;
 }

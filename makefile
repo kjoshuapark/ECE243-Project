@@ -28,7 +28,7 @@ OCFLAGS		:= -O srec
 
 # Files
 HDRS		:=
-SRCS		:= main.c
+SRCS		:= main.c draw.c
 OBJS		:= $(patsubst %, %.o, $(SRCS))
 
 # Targets

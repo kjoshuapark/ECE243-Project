@@ -12,6 +12,13 @@
         <type>C Program</type>
         <source_files>
             <source_file filepath="true">main.c</source_file>
+            <source_file filepath="true">draw.c</source_file>
+            <source_file filepath="true">address_map_arm.h</source_file>
+            <source_file filepath="true">defines.h</source_file>
+            <source_file filepath="true">interrupt_ID.h</source_file>
+            <source_file filepath="true">interval_timer_ISR.c</source_file>
+            <source_file filepath="true">pushbutton_ISR.c</source_file>
+            <source_file filepath="true">exceptions.c</source_file>
         </source_files>
         <options>
             <compiler_flags>-g -O1</compiler_flags>

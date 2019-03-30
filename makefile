@@ -27,8 +27,8 @@ LDFLAGS		:= $(patsubst %, -Wl$(DEFINE_COMMA)%, $(ARCHLDFLAGS)) $(ARCHLDSCRIPT)
 OCFLAGS		:= -O srec
 
 # Files
-HDRS		:=
-SRCS		:= main.c draw.c
+HDRS		:= address_map_arm.h defines.h interrupt_ID.h
+SRCS		:= main.c draw.c interval_timer_ISR.c pushbutton_ISR.c exceptions.c
 OBJS		:= $(patsubst %, %.o, $(SRCS))
 
 # Targets

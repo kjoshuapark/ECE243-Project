@@ -1,34 +1,23 @@
 #include<math.h>
 #include<stdbool.h>
+#include "draw.h"
 
-extern volatile int pixel_buffer_start; // global variable
-extern volatile int key_dir;
-
-void clear_screen();
-void plot_pixel(int x, int y, short int line_color);
-short int rgb24to16(short int r8,short int g8, short int b8);
-void draw_line(int x0, int y0, int x1,int y1, short int color);
-void swap(int*p1 ,int *p2);
-void wait_for_vsync();
-
-int y=0;
-void draw(){
-	wait_for_vsync();
-	draw_line(0, y, 319, y, 0xFFFF); // this line is green
-	y=y+key_dir;
-	if(y<=0||y>=239){
-		key_dir=-key_dir;
-	}
-	draw_line(0, y, 319, y, 0x07E0); // this line is green
-}
+short int bg_color = (short int)0xFFFF;//Background color
+bool erase_mode = false;
 void clear_screen(){
 	int x=0;
 	for(x;x<320;x++){
 		int y=0;
 		for(y;y<240;y++){
-			plot_pixel(x, y, rgb24to16(255,255,255));
+			plot_pixel(x, y, bg_color);
 		}
 	}
+}
+void draw_rectangle(int x,int y,int w,int h, short int color){
+	draw_line(x,y,x+w,y,color);
+	draw_line(x,y,x,y+h,color);
+	draw_line(x+w,y,x+w,y+h,color);
+	draw_line(x,y+h,x+w,y+h,color);
 }
 void draw_line(int x0, int y0, int x1,int y1, short int color){
 	bool is_steep = abs(y1 - y0) > abs(x1 - x0);
@@ -71,8 +60,15 @@ short int rgb24to16(short int r8,short int g8, short int b8){
 	short int rgb565 = b5 + (g5<<5) + (r5<<11);
 	return rgb565;
 }
-void plot_pixel(int x, int y, short int line_color){
-    *(short int *)(pixel_buffer_start + (y << 10) + (x << 1)) = line_color;
+void plot_pixel(int x, int y, short int color){
+	if(erase_mode){
+		color = bg_color;
+	}
+	volatile int pixel_buffer_start;
+    volatile int * pixel_ctrl_ptr = (int *)0xFF203020;
+	pixel_buffer_start = *pixel_ctrl_ptr;
+	
+	*(short int *)(pixel_buffer_start + (y << 10) + (x << 1)) = color;
 }
 void swap(int*p1 ,int *p2){
 	int temp;
@@ -80,8 +76,9 @@ void swap(int*p1 ,int *p2){
 	*p1=*p2 ;
 	*p2=temp ;
 }
+
 void wait_for_vsync(){
-	volatile int *pixel_ctrl_PTR = 0xFF203020;
+	volatile int *pixel_ctrl_PTR = (int *)0xFF203020;
 	register int status;
 	*pixel_ctrl_PTR = 1;
 	status = *(pixel_ctrl_PTR +3);
@@ -89,3 +86,4 @@ void wait_for_vsync(){
 		status = *(pixel_ctrl_PTR+3);
 	}
 }
+

@@ -16,6 +16,9 @@
             <source_file filepath="true">interval_timer_ISR.c</source_file>
             <source_file filepath="true">pushbutton_ISR.c</source_file>
             <source_file filepath="true">exceptions.c</source_file>
+            <source_file filepath="true">logic.c</source_file>
+            <source_file filepath="true">data.c</source_file>
+            <source_file filepath="true">scene.c</source_file>
         </source_files>
         <options>
             <compiler_flags>-g -O1</compiler_flags>

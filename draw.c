@@ -80,14 +80,16 @@ void swap(int*p1 ,int *p2){
 	*p1=*p2 ;
 	*p2=temp ;
 }
-
 void wait_for_vsync(){
-	volatile int *pixel_ctrl_PTR = (int *)0xFF203020;
-	register int status;
-	*pixel_ctrl_PTR = 1;
-	status = *(pixel_ctrl_PTR +3);
-	while((status & 0x01) != 0){
-		status = *(pixel_ctrl_PTR+3);
-	}
+    volatile int *pixel_ctrl_ptr = (int *)0xFF203020;
+    register int status;
+
+    *pixel_ctrl_ptr = 1; // start synchronized process
+
+    status = *(pixel_ctrl_ptr + 3);
+    while ((status & 0x01) != 0){
+        status = *(pixel_ctrl_ptr + 3);
+    }
 }
+
 

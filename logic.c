@@ -63,7 +63,7 @@ void lift_board(int board[][BOARD_ROWS], bool *odd){
 	for(col;col<BOARD_COLS;col++){
 		board[row][col] = NONE;
 		int type = rand()%TOTAL_TYPES;
-		//type =1;
+		type =1;
 		if(*odd){
 			if(col%2==1){
 				board[row][col] = type;

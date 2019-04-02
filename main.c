@@ -25,23 +25,26 @@ int main(void){
 
     enable_A9_interrupts(); // enable interrupts
 	
-	volatile int * pixel_ctrl_ptr = (int *)0xFF203020;
+	volatile int *pixel_ctrl_ptr = (int *)0xFF203020;
     *(pixel_ctrl_ptr + 1) = 0xC8000000;
+	
     wait_for_vsync();
     pixel_buffer_start = *pixel_ctrl_ptr;
-	clear_screen();
+    clear_screen();
 	
-	//*(pixel_ctrl_ptr + 1) = 0xC0000000;
-    //pixel_buffer_start = *(pixel_ctrl_ptr + 1);
-	//clear_screen();
-	//wait_for_vsync();
+    *(pixel_ctrl_ptr + 1) = 0xC0000000;
+    pixel_buffer_start = *(pixel_ctrl_ptr + 1); // we draw on the back buffer
+
 	init_board();
+    clear_screen();
 	while(1){
-		clear();
+		//clear();
+		
+		clear_screen();
 		logic();
 		scene_draw();
 		wait_for_vsync();
-		//pixel_buffer_start = *(pixel_ctrl_ptr+1);
+		pixel_buffer_start = *(pixel_ctrl_ptr + 1);
 	}
 }
 

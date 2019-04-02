@@ -1,23 +1,31 @@
 #include<math.h>
 #include<stdbool.h>
 #include "draw.h"
+#include "data.h"
 
+extern volatile int pixel_buffer_start;
 short int bg_color = (short int)0xFFFF;//Background color
 bool erase_mode = false;
 void clear_screen(){
 	int x=0;
-	for(x;x<320;x++){
+	for(x;x<SCREEN_W;x++){
 		int y=0;
-		for(y;y<240;y++){
+		for(y;y<SCREEN_H;y++){
 			plot_pixel(x, y, bg_color);
 		}
 	}
 }
+void fill_rectangle(int x,int y,int w,int h, short int color){
+	int nx=x;
+	for(nx;nx<(x+w);nx++){
+		draw_line(nx,y,nx,y+h-1,color);
+	}
+}
 void draw_rectangle(int x,int y,int w,int h, short int color){
-	draw_line(x,y,x+w,y,color);
-	draw_line(x,y,x,y+h,color);
-	draw_line(x+w,y,x+w,y+h,color);
-	draw_line(x,y+h,x+w,y+h,color);
+	draw_line(x,y,x+w-1,y,color);
+	draw_line(x,y,x,y+h-1,color);
+	draw_line(x+w-1,y,x+w-1,y+h-1,color);
+	draw_line(x,y+h-1,x+w-1,y+h-1,color);
 }
 void draw_line(int x0, int y0, int x1,int y1, short int color){
 	bool is_steep = abs(y1 - y0) > abs(x1 - x0);
@@ -64,10 +72,6 @@ void plot_pixel(int x, int y, short int color){
 	if(erase_mode){
 		color = bg_color;
 	}
-	volatile int pixel_buffer_start;
-    volatile int * pixel_ctrl_ptr = (int *)0xFF203020;
-	pixel_buffer_start = *pixel_ctrl_ptr;
-	
 	*(short int *)(pixel_buffer_start + (y << 10) + (x << 1)) = color;
 }
 void swap(int*p1 ,int *p2){
@@ -76,14 +80,16 @@ void swap(int*p1 ,int *p2){
 	*p1=*p2 ;
 	*p2=temp ;
 }
-
 void wait_for_vsync(){
-	volatile int *pixel_ctrl_PTR = (int *)0xFF203020;
-	register int status;
-	*pixel_ctrl_PTR = 1;
-	status = *(pixel_ctrl_PTR +3);
-	while((status & 0x01) != 0){
-		status = *(pixel_ctrl_PTR+3);
-	}
+    volatile int *pixel_ctrl_ptr = (int *)0xFF203020;
+    register int status;
+
+    *pixel_ctrl_ptr = 1; // start synchronized process
+
+    status = *(pixel_ctrl_ptr + 3);
+    while ((status & 0x01) != 0){
+        status = *(pixel_ctrl_ptr + 3);
+    }
 }
+
 

@@ -8,5 +8,6 @@ short int rgb24to16(short int r8,short int g8, short int b8);
 void draw_line(int x0, int y0, int x1,int y1, short int color);
 void swap(int*p1 ,int *p2);
 void draw_rectangle(int x,int y,int w,int h, short int color);
+void fill_rectangle(int x,int y,int w,int h, short int color);
 
 #endif

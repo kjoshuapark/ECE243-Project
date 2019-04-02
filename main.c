@@ -2,6 +2,8 @@
 #include "draw.h"
 #include<stdbool.h>
 
+volatile int pixel_buffer_start;
+
 void set_A9_IRQ_stack(void);
 void config_GIC(void);
 void config_interval_timer(void);
@@ -11,6 +13,7 @@ void enable_A9_interrupts(void);
 void scene_draw();
 void clear();
 void logic();
+void init_board();
 int main(void){
     /* Read location of the pixel buffer from the pixel buffer controller */
 	
@@ -22,13 +25,23 @@ int main(void){
 
     enable_A9_interrupts(); // enable interrupts
 	
-	
+	volatile int * pixel_ctrl_ptr = (int *)0xFF203020;
+    *(pixel_ctrl_ptr + 1) = 0xC8000000;
+    wait_for_vsync();
+    pixel_buffer_start = *pixel_ctrl_ptr;
 	clear_screen();
+	
+	//*(pixel_ctrl_ptr + 1) = 0xC0000000;
+    //pixel_buffer_start = *(pixel_ctrl_ptr + 1);
+	//clear_screen();
+	//wait_for_vsync();
+	init_board();
 	while(1){
 		clear();
 		logic();
 		scene_draw();
 		wait_for_vsync();
+		//pixel_buffer_start = *(pixel_ctrl_ptr+1);
 	}
 }
 

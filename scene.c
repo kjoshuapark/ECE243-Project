@@ -1,15 +1,54 @@
 #include<stdbool.h>
 #include "draw.h"
+#include "data.h"
 
-
-extern volatile int dir;
-extern volatile int p1_x;
-extern volatile int p1_y;
+extern int p1_x;
+extern int p2_x;
 
 extern bool erase_mode;
 
+extern int p1_board[BOARD_ROWS][BOARD_COLS];
+extern int p2_board[BOARD_ROWS][BOARD_COLS];
+
+extern int game_mode;
+void draw_board(int center, int board[][BOARD_ROWS]);
+void draw_role(int center, int x);
 void scene_draw(){
-	draw_rectangle(p1_x,p1_y,10,10,rgb24to16(0,255,0));
+	if(game_mode == SINGLE){
+	}
+	else if(game_mode == DUEL){
+		draw_line(SCREEN_W/2,0,SCREEN_W/2,SCREEN_H,0);
+		draw_line(SCREEN_W/2,0,SCREEN_W/2,SCREEN_H,0);
+		int p1_center = SCREEN_W/4;
+		int p2_center = SCREEN_W*3/4;
+		draw_board(p1_center,p1_board);
+		draw_board(p2_center,p2_board);
+		draw_role(p1_center,p1_x);
+		draw_role(p2_center,p2_x);
+	}
+}
+void draw_role(int center, int x){
+	int col_center = BOARD_COLS/2;
+	int board_y = (SCREEN_H - (PLATFORM_H+P_V_INTERVAL)*(BOARD_ROWS-1))/2;
+	fill_rectangle((x-col_center)*PLATFORM_W + center - ROLE_W/2,
+					(PLATFORM_H+P_V_INTERVAL)+board_y-ROLE_H,
+					ROLE_W,ROLE_H,0);
+}
+void draw_board(int center, int board[][BOARD_ROWS]){
+	int col_center = BOARD_COLS/2;
+	int board_y = (SCREEN_H - (PLATFORM_H+P_V_INTERVAL)*(BOARD_ROWS-1))/2;
+	int row=0;
+	for(row;row<BOARD_ROWS;row++){
+		int col=0;
+		for(col;col<BOARD_COLS;col++){
+			if(board[row][col]==PLATFORM){
+				fill_rectangle((col-col_center)*PLATFORM_W + center - PLATFORM_W/2,
+								row*(PLATFORM_H+P_V_INTERVAL)+board_y,
+								PLATFORM_W,PLATFORM_H,
+								rgb24to16(0,255,0));
+			}
+		}
+	}
 }
 void clear(){
 	erase_mode = true;

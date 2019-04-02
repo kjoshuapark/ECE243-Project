@@ -1,3 +1,4 @@
+#include "address_map_arm.h"
 #include<math.h>
 #include<stdbool.h>
 #include "draw.h"
@@ -5,7 +6,6 @@
 
 extern volatile int pixel_buffer_start;
 short int bg_color = (short int)0xFFFF;//Background color
-bool erase_mode = false;
 void clear_screen(){
 	int x=0;
 	for(x;x<SCREEN_W;x++){
@@ -69,9 +69,6 @@ short int rgb24to16(short int r8,short int g8, short int b8){
 	return rgb565;
 }
 void plot_pixel(int x, int y, short int color){
-	if(erase_mode){
-		color = bg_color;
-	}
 	*(short int *)(pixel_buffer_start + (y << 10) + (x << 1)) = color;
 }
 void swap(int*p1 ,int *p2){
@@ -81,7 +78,7 @@ void swap(int*p1 ,int *p2){
 	*p2=temp ;
 }
 void wait_for_vsync(){
-    volatile int *pixel_ctrl_ptr = (int *)0xFF203020;
+    volatile int *pixel_ctrl_ptr = (int *)PIXEL_BUF_CTRL_BASE;
     register int status;
 
     *pixel_ctrl_ptr = 1; // start synchronized process

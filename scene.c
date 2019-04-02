@@ -5,8 +5,6 @@
 extern int p1_x;
 extern int p2_x;
 
-extern bool erase_mode;
-
 extern int p1_board[BOARD_ROWS][BOARD_COLS];
 extern int p2_board[BOARD_ROWS][BOARD_COLS];
 
@@ -49,9 +47,4 @@ void draw_board(int center, int board[][BOARD_ROWS]){
 			}
 		}
 	}
-}
-void clear(){
-	erase_mode = true;
-	scene_draw();
-	erase_mode = false;
 }

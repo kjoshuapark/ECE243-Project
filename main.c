@@ -3,43 +3,26 @@
 #include<stdbool.h>
 
 volatile int pixel_buffer_start;
+volatile int *pixel_ctrl_ptr = (int *)PIXEL_BUF_CTRL_BASE;
 
 void set_A9_IRQ_stack(void);
 void config_GIC(void);
 void config_interval_timer(void);
 void config_KEYs(void);
 void enable_A9_interrupts(void);
+void setup_interupts();
+void setup_buffer();
 
 void scene_draw();
 void clear();
 void logic();
 void init_board();
 int main(void){
-    /* Read location of the pixel buffer from the pixel buffer controller */
+	setup_interupts();
+	setup_buffer();
 	
-	set_A9_IRQ_stack();      // initialize the stack pointer for IRQ mode
-    config_GIC();            // configure the general interrupt controller
-    config_interval_timer(); // configure Altera interval timer to generate
-                             // interrupts
-    config_KEYs();           // configure pushbutton KEYs to generate interrupts
-
-    enable_A9_interrupts(); // enable interrupts
-	
-	volatile int *pixel_ctrl_ptr = (int *)0xFF203020;
-    *(pixel_ctrl_ptr + 1) = 0xC8000000;
-	
-    wait_for_vsync();
-    pixel_buffer_start = *pixel_ctrl_ptr;
-    clear_screen();
-	
-    *(pixel_ctrl_ptr + 1) = 0xC0000000;
-    pixel_buffer_start = *(pixel_ctrl_ptr + 1); // we draw on the back buffer
-
 	init_board();
-    clear_screen();
 	while(1){
-		//clear();
-		
 		clear_screen();
 		logic();
 		scene_draw();
@@ -47,13 +30,31 @@ int main(void){
 		pixel_buffer_start = *(pixel_ctrl_ptr + 1);
 	}
 }
+void setup_interupts(){
+	set_A9_IRQ_stack();      // initialize the stack pointer for IRQ mode
+    config_GIC();            // configure the general interrupt controller
+    config_interval_timer(); // configure Altera interval timer to generate
+                             // interrupts
+    config_KEYs();           // configure pushbutton KEYs to generate interrupts
 
+    enable_A9_interrupts(); // enable interrupts
+}
+void setup_buffer(){
+    *(pixel_ctrl_ptr + 1) = FPGA_PIXEL_BUF_BASE;
+	
+    wait_for_vsync();
+    pixel_buffer_start = *pixel_ctrl_ptr;
+    clear_screen();
+	
+    *(pixel_ctrl_ptr + 1) = SDRAM_BASE;
+    pixel_buffer_start = *(pixel_ctrl_ptr + 1); // we draw on the back buffer
+
+    clear_screen();
+}
 /* setup the interval timer interrupts in the FPGA */
 void config_interval_timer(){
-    volatile int * interval_timer_ptr =
-        (int *)TIMER_BASE; // interal timer base address
+    volatile int * interval_timer_ptr =(int *)TIMER_BASE; // interal timer base address
 
-    /* set the interval timer period for scrolling the HEX displays */
 	float interval = 1/60; //60 FPS
     int counter                 = interval * 100000000; // 1/(100 MHz) x 5x10^6 = 50 msec
     *(interval_timer_ptr + 0x2) = (counter & 0xFFFF);

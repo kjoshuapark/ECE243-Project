@@ -16,3 +16,6 @@
 #define TOTAL_TYPES		2
 #define NONE			0
 #define PLATFORM 		1
+//Images
+#define NUM_W			10
+#define NUM_H			16

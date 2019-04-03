@@ -4,6 +4,7 @@
 #include "draw.h"
 #include "data.h"
 
+extern const unsigned short number[][NUM_W * NUM_H];
 extern volatile int pixel_buffer_start;
 short int bg_color = (short int)0xFFFF;//Background color
 void clear_screen(){
@@ -88,5 +89,16 @@ void wait_for_vsync(){
         status = *(pixel_ctrl_ptr + 3);
     }
 }
+void draw_zero() {
+	int col;
+	int row;
+	fill_rectangle(100, 25, 200, 100, 0);
 
+
+	for (row = 0; row < NUM_H; row++) {
+		for (col = 0; col < NUM_W; col++) {
+			plot_pixel(150 + row, 50 + col, number[0][row * col]);
+		}
+	}
+}
 

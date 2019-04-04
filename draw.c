@@ -108,6 +108,6 @@ void draw_three() {
 	int dim;
 
 	for (dim = 0; dim < NUM_H * NUM_W; dim++) {
-		plot_pixel(200 + dim % NUM_W, 150 + dim / NUM_W, number[dim]);
+		plot_pixel(200 + dim % NUM_W, 150 + dim / NUM_W, number[3][dim]);
 	}
 }

@@ -24,7 +24,7 @@ void scene_draw(){
 		draw_role(p1_center,p1_x);
 		draw_role(p2_center,p2_x);
 	}
-	draw_zero();
+	draw_three();
 }
 void draw_role(int center, int x){
 	int col_center = BOARD_COLS/2;

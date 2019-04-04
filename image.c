@@ -1,8 +1,8 @@
 #include "data.h"
 
 // display numbers on vga
-short int color1 = (short int)0xFFFF; //Background color
-short int color2 = (short int)0x0000; //Font color
+#define color1 0xFFFF //Background color
+#define color2 0x0000 //Font color
 const unsigned short number[10][NUM_W * NUM_H] = {
 	{
 		// 0

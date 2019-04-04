@@ -10,5 +10,6 @@ void swap(int*p1 ,int *p2);
 void draw_rectangle(int x,int y,int w,int h, short int color);
 void fill_rectangle(int x,int y,int w,int h, short int color);
 void draw_zero();
+void draw_three();
 
 #endif

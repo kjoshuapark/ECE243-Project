@@ -17,5 +17,5 @@
 #define NONE			0
 #define PLATFORM 		1
 //Images
-#define NUM_W			10
-#define NUM_H			16
+#define NUM_W			7
+#define NUM_H			11

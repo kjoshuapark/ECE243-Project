@@ -6,123 +6,241 @@
 const unsigned short number[10][NUM_W * NUM_H] = {
 	{
 		// 0
-		0xFFFF, 0x0000, 0x0000, 0x0000, 0xFFFF, // row 1, 5 pixels
-		0x0000, 0xFFFF, 0xFFFF, 0xFFFF, 0x0000, // row 2, 10 pixels
-		0x0000, 0xFFFF, 0xFFFF, 0x0000, 0x0000, // row 3, 15 pixels
-		0x0000, 0xFFFF, 0x0000, 0xFFFF, 0x0000, // row 4, 20 pixels
-		0x0000, 0x0000, 0xFFFF, 0xFFFF, 0x0000, // row 5, 25 pixels
-		0x0000, 0xFFFF, 0xFFFF, 0xFFFF, 0x0000, // row 6, 30 pixels
-		0xFFFF, 0x0000, 0x0000, 0x0000, 0xFFFF  // row 7, 35 pixels
+		color1, color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, color1, // row 1,  13 pixels
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, // row 2,  26 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 3,  39 pixels
+		color2, color2, color2, color2, color1, color1, color1, color1, color1, color2, color2, color2, color2, // row 4,  52 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 5,  65 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 6,  78 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 7,  91 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 8,  104 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 9,  117 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 10, 130 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 11, 143 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 12, 156 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 13, 169 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 14, 182 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 15, 195 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 16, 208 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 17, 221 pixels
+		color2, color2, color2, color2, color1, color1, color1, color1, color1, color2, color2, color2, color2, // row 18, 234 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 19, 257 pixels
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, // row 20, 260 pixels
+		color1, color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, color1  // row 21, 273 pixels
 	},
 	{
 		// 1
-		0xFFFF, 0xFFFF, 0x0000, 0xFFFF, 0xFFFF, // row 1, 5 pixels
-		0xFFFF, 0x0000, 0x0000, 0xFFFF, 0xFFFF, // row 2, 10 pixels
-		0x0000, 0xFFFF, 0x0000, 0xFFFF, 0xFFFF, // row 3, 15 pixels
-		0xFFFF, 0xFFFF, 0x0000, 0xFFFF, 0xFFFF, // row 4, 20 pixels
-		0xFFFF, 0xFFFF, 0x0000, 0xFFFF, 0xFFFF, // row 5, 25 pixels
-		0xFFFF, 0xFFFF, 0x0000, 0xFFFF, 0xFFFF, // row 6, 30 pixels
-		0x0000, 0x0000, 0x0000, 0x0000, 0x0000  // row 7, 35 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 1,  13 pixels
+		color1, color1, color1, color1, color2, color2, color2, color2, color1, color1, color1, color1, color1, // row 2,  26 pixels
+		color1, color1, color1, color2, color2, color2, color2, color2, color1, color1, color1, color1, color1, // row 3,  39 pixels
+		color1, color1, color2, color2, color2, color2, color2, color2, color1, color1, color1, color1, color1, // row 4,  52 pixels
+		color1, color1, color2, color2, color2, color2, color2, color2, color1, color1, color1, color1, color1, // row 5,  65 pixels
+		color1, color1, color2, color2, color2, color2, color2, color2, color1, color1, color1, color1, color1, // row 6,  78 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 7,  91 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 8,  104 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 9,  117 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 10, 130 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 11, 143 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 12, 156 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 13, 169 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 14, 182 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 15, 195 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 16, 208 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 17, 221 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 18, 234 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 19, 257 pixels
+		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1, // row 20, 260 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2  // row 21, 273 pixels
 	},
 	{
 		// 2
-		0xFFFF, 0xFFFF, 0x0000, 0xFFFF, 0xFFFF, // row 1, 5 pixels
-		0xFFFF, 0x0000, 0x0000, 0xFFFF, 0xFFFF, // row 2, 10 pixels
-		0x0000, 0xFFFF, 0x0000, 0xFFFF, 0xFFFF, // row 3, 15 pixels
-		0xFFFF, 0xFFFF, 0x0000, 0xFFFF, 0xFFFF, // row 4, 20 pixels
-		0xFFFF, 0xFFFF, 0x0000, 0xFFFF, 0xFFFF, // row 5, 25 pixels
-		0xFFFF, 0xFFFF, 0x0000, 0xFFFF, 0xFFFF, // row 6, 30 pixels
-		0x0000, 0x0000, 0x0000, 0x0000, 0x0000  // row 7, 35 pixels
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, // row 1,  13 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 2,  26 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 3,  39 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 4,  52 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 5,  65 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 6,  78 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 7,  91 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 8,  104 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 9,  117 pixels
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 10, 130 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 11, 143 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, // row 12, 156 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 13, 169 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 14, 182 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 15, 195 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 16, 208 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 17, 221 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 18, 234 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 19, 257 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 20, 260 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2  // row 21, 273 pixels
 	},
 	{
 		// 3
-		color1, color1, color2, color2, color2, color1, color1, // 0x0010 (16) pixels
-		color1, color2, color1, color1, color1, color2, color1, // 0x0020 (32) pixels
-		color2, color1, color1, color1, color1, color1, color2, // 0x0030 (48) pixels
-		color2, color1, color1, color1, color1, color1, color2, // 0x0040 (64) pixels
-		color1, color1, color1, color1, color1, color2, color1, // 0x0050 (80) pixels
-		color1, color1, color1, color2, color2, color1, color1, // 0x0060 (96) pixels
-		color1, color1, color1, color1, color1, color2, color1, // 0x0070 (112) pixels
-		color2, color1, color1, color1, color1, color1, color2, // 0x0080 (128) pixels
-		color2, color1, color1, color1, color1, color1, color2, // 0x0090 (144) pixels
-		color1, color2, color1, color1, color1, color2, color1, // 0x00A0 (160) pixels
-		color1, color1, color2, color2, color2, color1, color1  // 0x00A0 (160) pixels
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, // row 1,  13 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 2,  26 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 3,  39 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 4,  52 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 5,  65 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 6,  78 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 7,  91 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 8,  104 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 9,  117 pixels
+		color1, color1, color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 10, 130 pixels
+		color1, color1, color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, // row 11, 143 pixels
+		color1, color1, color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 12, 156 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 13, 169 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 14, 182 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 15, 195 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 16, 208 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 17, 221 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 18, 234 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 19, 257 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 20, 260 pixels
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1  // row 21, 273 pixels
 	},
 	{
-		// number 4
-		0x0000, 0x0000, 0x0000, 0x4A49, 0xC638, 0xCE59, 0xCE59, 0xCE59, 0x630C, 0x0000, 0x0000, 0x0000, 0x0020, 0xA514, 0xFFFF, 0xFFFF, // 0x0010 (16) pixels
-		0xFFFF, 0xFFFF, 0x7BCF, 0x0000, 0x0000, 0x0000, 0x2965, 0xE73C, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0x7BEF, 0x0000, 0x0000, 0x0000, // 0x0020 (32) pixels
-		0x7BEF, 0xFFFF, 0xFFDF, 0xFFDF, 0xFFFF, 0xFFFF, 0x8430, 0x0000, 0x0000, 0x10A2, 0xCE59, 0xFFFF, 0xD6BA, 0xD6BA, 0xFFFF, 0xFFFF, // 0x0030 (48) pixels
-		0x8C51, 0x0000, 0x0000, 0x52AA, 0xF7BE, 0xFFFF, 0x8430, 0xBDD7, 0xFFFF, 0xFFFF, 0x8C71, 0x0000, 0x0841, 0xAD55, 0xFFFF, 0xE73C, // 0x0040 (64) pixels
-		0x39C7, 0xB596, 0xFFFF, 0xFFFF, 0x9492, 0x0000, 0x39C7, 0xE73C, 0xFFFF, 0xA534, 0x0861, 0xAD75, 0xFFFF, 0xFFFF, 0x94B2, 0x0000, // 0x0050 (80) pixels
-		0x9492, 0xFFFF, 0xF7BE, 0x528A, 0x0000, 0xA534, 0xFFFF, 0xFFFF, 0x9CD3, 0x0000, 0xE73C, 0xFFFF, 0xEF5D, 0x7BEF, 0x6B6D, 0xCE79, // 0x0060 (96) pixels
-		0xFFFF, 0xFFFF, 0xD69A, 0x7BCF, 0xEF5D, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xE73C, 0xDEFB, 0xFFFF, // 0x0070 (112) pixels
-		0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xE71C, 0x632C, 0x7BCF, 0x7BEF, 0x7BEF, 0x8410, 0xD69A, 0xFFFF, 0xFFFF, // 0x0080 (128) pixels
-		0xCE79, 0x630C, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0xA514, 0xFFFF, 0xFFFF, 0xA534, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, // 0x0090 (144) pixels
-		0x0000, 0xA534, 0xFFFF, 0xFFFF, 0xA534, 0x0020, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0xA534, 0xFFFF, 0xFFFF, 0xA514, 0x0000  // 0x00A0 (160) pixels
+		// 4
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 1,  13 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 2,  26 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 3,  39 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 4,  52 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 5,  65 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 6,  78 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 7,  91 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 8,  104 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 9,  117 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 10, 130 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 11, 143 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 12, 156 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 13, 169 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 14, 182 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 15, 195 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 16, 208 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 17, 221 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 18, 234 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 19, 257 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 20, 260 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2  // row 21, 273 pixels
 	},
 	{
-		// number 5
-		0x6B4D, 0xEF5D, 0xEF7D, 0xEF7D, 0xEF7D, 0xEF7D, 0xEF7D, 0xEF7D, 0xEF7D, 0xAD75, 0x6B6D, 0xFFDF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, // 0x0010 (16) pixels
-		0xFFFF, 0xFFFF, 0xFFFF, 0xBDF7, 0x6B6D, 0xFFDF, 0xFFFF, 0xFFFF, 0xDEFB, 0xCE59, 0xCE59, 0xCE59, 0xC638, 0x9492, 0x6B6D, 0xFFFF, // 0x0020 (32) pixels
-		0xFFFF, 0xFFFF, 0x73AE, 0x0861, 0x0861, 0x0861, 0x0861, 0x0861, 0x738E, 0xFFFF, 0xFFFF, 0xFFFF, 0x738E, 0x3186, 0x5ACB, 0x528A, // 0x0030 (48) pixels
-		0x2124, 0x0000, 0x738E, 0xFFFF, 0xFFFF, 0xFFFF, 0xDEDB, 0xEF5D, 0xFFDF, 0xFFDF, 0xD6BA, 0x6B4D, 0x738E, 0xFFFF, 0xFFFF, 0xFFFF, // 0x0040 (64) pixels
-		0xF7BE, 0xF7BE, 0xFFFF, 0xFFFF, 0xFFFF, 0xF79E, 0x738E, 0xFFDF, 0xFFFF, 0xF79E, 0x6B6D, 0x5AEB, 0xE73C, 0xFFFF, 0xFFFF, 0xFFFF, // 0x0050 (80) pixels
-		0x2965, 0x5AEB, 0x5AEB, 0x528A, 0x0861, 0x0861, 0xCE59, 0xFFFF, 0xFFFF, 0xFFFF, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0861, // 0x0060 (96) pixels
-		0xC618, 0xFFFF, 0xFFFF, 0xFFFF, 0x2124, 0x2124, 0x2124, 0x2104, 0x0020, 0x0861, 0xBDF7, 0xFFFF, 0xFFFF, 0xFFFF, 0xE71C, 0xE71C, // 0x0070 (112) pixels
-		0xE73C, 0xCE59, 0x2104, 0x0020, 0xB5B6, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xEF7D, 0x528A, 0x3186, 0xD69A, 0xFFFF, // 0x0080 (128) pixels
-		0xFFFF, 0xFFFF, 0xF79E, 0xFFFF, 0xFFFF, 0xFFFF, 0xEF5D, 0xE71C, 0xFFDF, 0xFFFF, 0xFFFF, 0xFFDF, 0x8C71, 0xF79E, 0xFFFF, 0xFFFF, // 0x0090 (144) pixels
-		0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xF79E, 0x9CF3, 0x0861, 0x632C, 0xC638, 0xF79E, 0xFFFF, 0xFFFF, 0xF79E, 0xC638, 0x6B4D, 0x1082  // 0x00A0 (160) pixels
+		// 5
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 1,  13 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 2,  26 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 3,  39 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 4,  52 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 5,  65 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 6,  78 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 7,  91 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 8,  104 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 9,  117 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, // row 10, 130 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 11, 143 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 12, 156 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 13, 169 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 14, 182 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 15, 195 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 16, 208 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 17, 221 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 18, 234 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 19, 257 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 20, 260 pixels
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1  // row 21, 273 pixels
 	},
 	{
-		// number 6
-		0x0000, 0x2104, 0x738E, 0xAD75, 0xCE59, 0xCE79, 0xC618, 0x94B2, 0x4A49, 0x0841, 0x2124, 0xB5B6, 0xFFDF, 0xFFFF, 0xFFFF, 0xFFFF, // 0x0010 (16) pixels
-		0xFFFF, 0xFFFF, 0xEF5D, 0x7BEF, 0x8C51, 0xFFFF, 0xFFFF, 0xFFFF, 0xE73C, 0xD6BA, 0xF7BE, 0xFFFF, 0xFFFF, 0xF7BE, 0xBDD7, 0xFFFF, // 0x0020 (32) pixels
-		0xFFFF, 0xFFDF, 0x632C, 0x18E3, 0xC638, 0xFFFF, 0xFFFF, 0xFFFF, 0xB5B6, 0xFFFF, 0xFFFF, 0xFFDF, 0x528A, 0x0000, 0x9492, 0xDEDB, // 0x0030 (48) pixels
-		0xD6BA, 0xD6BA, 0xB596, 0xFFFF, 0xFFFF, 0xFFDF, 0x52AA, 0x0000, 0x18E3, 0x2104, 0x18C3, 0x18C3, 0xAD75, 0xFFFF, 0xFFFF, 0xFFDF, // 0x0040 (64) pixels
-		0xA514, 0xA514, 0xBDF7, 0xAD75, 0x738E, 0x18E3, 0xA534, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xCE59, // 0x0050 (80) pixels
-		0xA514, 0xFFFF, 0xFFFF, 0xFFFF, 0xE73C, 0xCE59, 0xF79E, 0xFFFF, 0xFFFF, 0xFFFF, 0x9CF3, 0xFFFF, 0xFFFF, 0xF7BE, 0x630C, 0x1082, // 0x0060 (96) pixels
-		0xA514, 0xFFFF, 0xFFFF, 0xFFFF, 0x94B2, 0xFFFF, 0xFFFF, 0xF7BE, 0x4A69, 0x0000, 0x8410, 0xFFFF, 0xFFFF, 0xFFFF, 0x94B2, 0xFFFF, // 0x0070 (112) pixels
-		0xFFFF, 0xFFDF, 0x528A, 0x0000, 0x8410, 0xFFFF, 0xFFFF, 0xFFFF, 0x9492, 0xFFFF, 0xFFFF, 0xFFDF, 0x5AEB, 0x0000, 0x8410, 0xFFFF, // 0x0080 (128) pixels
-		0xFFFF, 0xFFFF, 0x73AE, 0xFFDF, 0xFFFF, 0xFFFF, 0xC638, 0x8430, 0xD69A, 0xFFFF, 0xFFFF, 0xFFFF, 0x3186, 0xDEDB, 0xFFFF, 0xFFFF, // 0x0090 (144) pixels
-		0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xE71C, 0x0020, 0x52AA, 0xD6BA, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xF7BE, 0xBDD7, 0x4228  // 0x00A0 (160) pixels
+		// 6
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 1,  13 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 2,  26 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 3,  39 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 4,  52 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 5,  65 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 6,  78 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 7,  91 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 8,  104 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, // row 9,  117 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, // row 10, 130 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 11, 143 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 12, 156 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 13, 169 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 14, 182 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 15, 195 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 16, 208 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 17, 221 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 18, 234 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 19, 257 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 20, 260 pixels
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1  // row 21, 273 pixels
 	},
 	{
-		// number 7
-		0x9492, 0xB5B6, 0xB596, 0xB5B6, 0xB5B6, 0xBDD7, 0xBDD7, 0xBDD7, 0xBDD7, 0xBDF7, 0xC618, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, // 0x0010 (16) pixels
-		0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xB5B6, 0xFFDF, 0xF7BE, 0xF7BE, 0xFFDF, 0xF7BE, 0xFFDF, 0xFFFF, 0xFFFF, 0xFFFF, 0x31A6, 0x4A49, // 0x0020 (32) pixels
-		0x4A49, 0x4A49, 0x4A49, 0x9CF3, 0xFFFF, 0xFFFF, 0xFFFF, 0xF7BE, 0x0000, 0x0000, 0x0000, 0x0000, 0x0841, 0xBDD7, 0xFFFF, 0xFFFF, // 0x0030 (48) pixels
-		0xFFFF, 0xBDF7, 0x0000, 0x0000, 0x0000, 0x0000, 0x4208, 0xEF7D, 0xFFFF, 0xFFFF, 0xF7BE, 0x632C, 0x0000, 0x0000, 0x0000, 0x0000, // 0x0040 (64) pixels
-		0x8C71, 0xFFFF, 0xFFFF, 0xFFFF, 0xD69A, 0x2104, 0x0000, 0x0000, 0x0000, 0x18E3, 0xD69A, 0xFFFF, 0xFFFF, 0xFFFF, 0x8C71, 0x0020, // 0x0050 (80) pixels
-		0x0000, 0x0000, 0x0000, 0x5AEB, 0xFFDF, 0xFFFF, 0xFFFF, 0xF79E, 0x4208, 0x0000, 0x0000, 0x0000, 0x0841, 0xAD55, 0xFFFF, 0xFFFF, // 0x0060 (96) pixels
-		0xFFFF, 0xBDF7, 0x1082, 0x0000, 0x0000, 0x0000, 0x3186, 0xE73C, 0xFFFF, 0xFFFF, 0xFFFF, 0x73AE, 0x0000, 0x0000, 0x0000, 0x0000, // 0x0070 (112) pixels
-		0x7BEF, 0xFFFF, 0xFFFF, 0xFFFF, 0xE71C, 0x2965, 0x0000, 0x0000, 0x0000, 0x10A2, 0xCE59, 0xFFFF, 0xFFFF, 0xFFFF, 0xAD55, 0x0841, // 0x0080 (128) pixels
-		0x0000, 0x0000, 0x0000, 0x4A69, 0xF7BE, 0xFFFF, 0xFFFF, 0xFFDF, 0x5ACB, 0x0000, 0x0000, 0x0000, 0x0020, 0x9CF3, 0xFFFF, 0xFFFF, // 0x0090 (144) pixels
-		0xFFFF, 0xD6BA, 0x2104, 0x0000, 0x0000, 0x0000, 0x2945, 0xDEDB, 0xFFFF, 0xFFFF, 0xFFFF, 0x9CD3, 0x0020, 0x0000, 0x0000, 0x0000  // 0x00A0 (160) pixels
+		// 7
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 1,  13 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 2,  26 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 3,  39 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 4,  52 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 5,  65 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 6,  78 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 7,  91 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 8,  104 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 9,  117 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 10, 130 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 11, 143 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 12, 156 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 13, 169 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 14, 182 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 15, 195 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 16, 208 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 17, 221 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 18, 234 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 19, 257 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 20, 260 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2  // row 21, 273 pixels
 	},
 	{
-		// number 8
-		0x0020, 0x39C7, 0x9CF3, 0xD6BA, 0xEF5D, 0xE71C, 0xC638, 0x8C71, 0x3186, 0x0020, 0x528A, 0xDEDB, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, // 0x0010 (16) pixels
-		0xFFFF, 0xFFFF, 0xD6BA, 0x4228, 0xCE59, 0xFFFF, 0xFFFF, 0xEF7D, 0xB596, 0xBDF7, 0xFFDF, 0xFFFF, 0xFFFF, 0xAD75, 0xEF5D, 0xFFFF, // 0x0020 (32) pixels
-		0xFFFF, 0xBDD7, 0x0861, 0x18C3, 0xCE59, 0xFFFF, 0xFFFF, 0xD69A, 0xEF5D, 0xFFFF, 0xFFFF, 0xBDD7, 0x0841, 0x0020, 0xB596, 0xFFFF, // 0x0030 (48) pixels
-		0xFFFF, 0xDEFB, 0xC638, 0xFFFF, 0xFFFF, 0xCE79, 0x2104, 0x18E3, 0xC618, 0xFFFF, 0xFFFF, 0xC638, 0x52AA, 0xDEDB, 0xFFDF, 0xFFDF, // 0x0040 (64) pixels
-		0xCE79, 0xCE79, 0xFFDF, 0xFFFF, 0xDEFB, 0x5AEB, 0x0841, 0x73AE, 0xE73C, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xEF7D, 0x9CD3, 0x2124, // 0x0050 (80) pixels
-		0x6B6D, 0xEF5D, 0xFFFF, 0xF79E, 0xA514, 0x9CF3, 0xEF7D, 0xFFFF, 0xFFDF, 0xC638, 0xDEDB, 0xFFFF, 0xFFFF, 0xD6BA, 0x18C3, 0x0020, // 0x0060 (96) pixels
-		0xAD75, 0xFFFF, 0xFFFF, 0xFFFF, 0xF7BE, 0xFFFF, 0xFFFF, 0xD69A, 0x10A2, 0x0000, 0x9CF3, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFDF, 0xFFFF, // 0x0070 (112) pixels
-		0xFFFF, 0xD69A, 0x10A2, 0x0000, 0x9CF3, 0xFFFF, 0xFFFF, 0xFFFF, 0xF7BE, 0xFFFF, 0xFFFF, 0xDEFB, 0x2124, 0x0000, 0xA534, 0xFFFF, // 0x0080 (128) pixels
-		0xFFFF, 0xFFFF, 0xDEFB, 0xFFFF, 0xFFFF, 0xFFDF, 0xBDF7, 0x9CD3, 0xE73C, 0xFFFF, 0xFFFF, 0xFFFF, 0x94B2, 0xFFDF, 0xFFFF, 0xFFFF, // 0x0090 (144) pixels
-		0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xDEFB, 0x2104, 0xA514, 0xF79E, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xF7BE, 0xBDD7, 0x4228  // 0x00A0 (160) pixels
+		// 8
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, // row 1,  13 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 2,  26 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 3,  39 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 4,  52 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 5,  65 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 6,  78 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 7,  91 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 8,  104 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 9,  117 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 10, 130 pixels
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, // row 11, 143 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 12, 156 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 13, 169 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 14, 182 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 15, 195 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 16, 208 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 17, 221 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 18, 234 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 19, 257 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 20, 260 pixels
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1  // row 21, 273 pixels
 	},
 	{
-		// number 9
-		0x10A2, 0x7BEF, 0xE71C, 0xFFDF, 0xFFDF, 0xFFFF, 0xFFFF, 0xFFDF, 0xC618, 0x4A69, 0x9492, 0xF7BE, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, // 0x0010 (16) pixels
-		0xFFFF, 0xFFFF, 0xFFFF, 0xE71C, 0xF79E, 0xFFFF, 0xFFFF, 0xFFDF, 0xBDD7, 0x9CD3, 0xE73C, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, // 0x0020 (32) pixels
-		0xFFFF, 0xEF7D, 0x39C7, 0x0000, 0x9CD3, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xEF5D, 0x3186, 0x0000, 0x8C51, 0xFFFF, // 0x0030 (48) pixels
-		0xFFFF, 0xFFFF, 0xFFDF, 0xFFFF, 0xFFFF, 0xEF7D, 0x39C7, 0x0000, 0x8430, 0xFFFF, 0xFFFF, 0xFFFF, 0xEF7D, 0xFFFF, 0xFFFF, 0xF79E, // 0x0040 (64) pixels
-		0x4A49, 0x0000, 0x8C71, 0xFFFF, 0xFFFF, 0xFFFF, 0xD6BA, 0xFFFF, 0xFFFF, 0xFFFF, 0xCE59, 0xA514, 0xE71C, 0xFFFF, 0xFFFF, 0xFFFF, // 0x0050 (80) pixels
-		0x94B2, 0xFFDF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0x18C3, 0x7BCF, 0xCE59, 0xE73C, 0xE73C, 0xC638, // 0x0060 (96) pixels
-		0xD6BA, 0xFFFF, 0xFFFF, 0xFFFF, 0x0000, 0x0000, 0x10A2, 0x2965, 0x2965, 0x1082, 0x9492, 0xFFFF, 0xFFFF, 0xFFFF, 0x8430, 0xA514, // 0x0070 (112) pixels
-		0x9CF3, 0x9CF3, 0x31A6, 0x0000, 0x8C71, 0xFFFF, 0xFFFF, 0xFFFF, 0xCE79, 0xFFFF, 0xFFFF, 0xFFFF, 0x6B4D, 0x0000, 0x8C71, 0xFFFF, // 0x0080 (128) pixels
-		0xFFFF, 0xFFFF, 0xBDD7, 0xFFFF, 0xFFFF, 0xFFFF, 0xCE79, 0x8C51, 0xD6BA, 0xFFFF, 0xFFFF, 0xFFFF, 0x5AEB, 0xEF5D, 0xFFFF, 0xFFFF, // 0x0090 (144) pixels
-		0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFFF, 0xEF7D, 0x0841, 0x632C, 0xD6BA, 0xFFDF, 0xFFFF, 0xFFFF, 0xFFFF, 0xFFDF, 0xCE79, 0x630C  // 0x00A0 (160) pixels
+		// 9
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1, // row 1,  13 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 2,  26 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 3,  39 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 4,  52 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 5,  65 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 6,  78 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 7,  91 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 8,  104 pixels
+		color2, color2, color2, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 9,  117 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 10, 130 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 11, 143 pixels
+		color1, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 12, 156 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 13, 169 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 14, 182 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 15, 195 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 16, 208 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 17, 221 pixels
+		color1, color1, color1, color1, color1, color1, color1, color1, color1, color1, color2, color2, color2, // row 18, 234 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 19, 257 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, // row 20, 260 pixels
+		color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color2, color1  // row 21, 273 pixels
 	} };

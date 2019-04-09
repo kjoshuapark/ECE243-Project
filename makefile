@@ -28,7 +28,7 @@ OCFLAGS		:= -O srec
 
 # Files
 HDRS		:=
-SRCS		:= main.c draw.c interval_timer_ISR.c pushbutton_ISR.c exceptions.c logic.c data.c scene.c image.c
+SRCS		:= main.c draw.c interval_timer_ISR.c pushbutton_ISR.c exceptions.c logic.c data.c scene.c image.c animation.c
 OBJS		:= $(patsubst %, %.o, $(SRCS))
 
 # Targets

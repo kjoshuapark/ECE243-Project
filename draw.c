@@ -5,8 +5,6 @@
 #include "data.h"
 
 extern const unsigned short number[][NUM_W * NUM_H];
-extern short int color1 = (short int)0xFFFF; //Background color
-extern short int color2 = (short int)0x0000; //Font color
 extern volatile int pixel_buffer_start;
 short int bg_color = (short int)0xFFFF;//Background color
 void clear_screen(){

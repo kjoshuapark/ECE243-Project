@@ -1,5 +1,5 @@
 #include "data.h"
-
+int tick = 0;
 int game_mode = DUEL;
 int p1_x = BOARD_COLS/2;
 int p2_x = BOARD_COLS/2;

@@ -1,4 +1,5 @@
 #include "address_map_arm.h"
+#include "animation.h"
 #include "data.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,17 +37,21 @@ void logic(){
 	while(key[2]!=0){
 		if(p1_x != (BOARD_ROWS-1)){
 			p1_x+=1;
+			p1_move(RIGHT);
+			p1b_move(UP);
+			lift_board(p1_board,&p1_odd_row);
 		}else{
 		}
-		lift_board(p1_board,&p1_odd_row);
 		key[2]--;
 	}
 	while(key[3]!=0){
 		if(p1_x != 0){
 			p1_x-=1;
+			p1_move(LEFT);
+			p1b_move(UP);
+			lift_board(p1_board,&p1_odd_row);
 		}else{
 		}
-		lift_board(p1_board,&p1_odd_row);
 		key[3]--;
 	}
 }
@@ -63,7 +68,6 @@ void lift_board(int board[][BOARD_ROWS], bool *odd){
 	for(col;col<BOARD_COLS;col++){
 		board[row][col] = NONE;
 		int type = rand()%TOTAL_TYPES;
-		type =1;
 		if(*odd){
 			if(col%2==1){
 				board[row][col] = type;

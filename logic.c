@@ -14,6 +14,9 @@ extern int p1_board[BOARD_ROWS][BOARD_COLS];
 extern int p2_board[BOARD_ROWS][BOARD_COLS];
 extern int game_mode;
 
+extern int p1_score;
+extern int p2_score;
+
 bool p1_odd_row = false;
 bool p2_odd_row = false;
 void lift_board(int board[][BOARD_ROWS], bool *odd);
@@ -39,6 +42,7 @@ void logic(){
 			p1_x+=1;
 			p1_move(RIGHT);
 			p1b_move(UP);
+			p1_score++;
 			lift_board(p1_board,&p1_odd_row);
 		}else{
 		}
@@ -49,6 +53,7 @@ void logic(){
 			p1_x-=1;
 			p1_move(LEFT);
 			p1b_move(UP);
+			p1_score++;
 			lift_board(p1_board,&p1_odd_row);
 		}else{
 		}
@@ -103,4 +108,11 @@ void init_board(){
 	}
 	p1_board[1][p1_x] = PLATFORM;
 	p2_board[1][p1_x] = PLATFORM;
+	
+	p1_x = 0;
+	p2_x = 0;
+
+	p1_score = 0;
+	p2_score = 0;
+	
 }

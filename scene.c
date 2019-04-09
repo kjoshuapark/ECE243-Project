@@ -8,12 +8,16 @@ extern int p2_x;
 extern int p1_board[BOARD_ROWS][BOARD_COLS];
 extern int p2_board[BOARD_ROWS][BOARD_COLS];
 
+extern int p1_score;
+extern int p2_score;
+
 int p1_offset = 0;
 int p1b_offset = 0;
 
 extern int game_mode;
 void draw_board(int center, int y_offset,int board[][BOARD_ROWS]);
 void draw_role(int center, int x, int x_offset);
+void draw_score();
 void scene_draw(){
 	if(game_mode == SINGLE){
 	}
@@ -21,11 +25,17 @@ void scene_draw(){
 		draw_line(SCREEN_W/2,0,SCREEN_W/2,SCREEN_H,0);
 		int p1_center = SCREEN_W/4;
 		int p2_center = SCREEN_W*3/4;
+		
 		draw_board(p1_center,p1b_offset,p1_board);
 		draw_board(p2_center,0,p2_board);
+		
+		draw_sequence(p1_center,SCORE_Y,p1_score,false);
+		draw_sequence(p2_center,SCORE_Y,p2_score,true);
+		
 		draw_role(p1_center,p1_x,p1_offset);
 		draw_role(p2_center,p2_x,0);
 	}
+
 }
 void draw_role(int center, int x, int x_offset){
 	int col_center = BOARD_COLS/2;

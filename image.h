@@ -1,3 +1,6 @@
+#ifndef IMAGE_H
+#define IMAGE_H
+
 #include "data.h"
 
 // display characters on vga
@@ -367,3 +370,4 @@ const unsigned short number[10][NUM_W * NUM_H] = {
 		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1  // row 21, 273 pixels
 	}
  };
+ #endif

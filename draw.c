@@ -5,6 +5,14 @@
 #include "data.h"
 
 extern const unsigned short number[][NUM_W * NUM_H];
+extern const unsigned short start[][NUM_W * NUM_H];
+extern const unsigned short go[][NUM_W * NUM_H];
+extern const unsigned short win[][NUM_W * NUM_H];
+extern const unsigned short lose[][NUM_W * NUM_H];
+extern const unsigned short draw[][NUM_W * NUM_H];
+extern const unsigned short spike[SPIKE_DIM * SPIKE_DIM];
+extern short int color1 = (short int)0xFFFF; //Background color
+extern short int color2 = (short int)0x0000; //Font color
 extern volatile int pixel_buffer_start;
 short int bg_color = (short int)0xFFFF;//Background color
 short int space_between_char = 2;
@@ -132,6 +140,61 @@ void draw_start(int x, int y) {
 		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
 			if (start[letter][dim] == color2) {
 				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, start[letter][dim]);
+			}
+		}
+	}
+}
+void draw_go(int x, int y) {
+	int letter, dim;
+
+	for (letter = 0; letter < 2; letter++) {
+		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
+			if (go[letter][dim] == color2) {
+				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, go[letter][dim]);
+			}
+		}
+	}
+}
+void draw_win(int x, int y) {
+	int letter, dim;
+
+	for (letter = 0; letter < 3; letter++) {
+		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
+			if (win[letter][dim] == color2) {
+				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, win[letter][dim]);
+			}
+		}
+	}
+}
+void draw_lose(int x, int y) {
+	int letter, dim;
+
+	for (letter = 0; letter < 4; letter++) {
+		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
+			if (lose[letter][dim] == color2) {
+				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, lose[letter][dim]);
+			}
+		}
+	}
+}
+void draw_draw(int x, int y) {
+	int letter, dim;
+
+	for (letter = 0; letter < 4; letter++) {
+		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
+			if (draw[letter][dim] == color2) {
+				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, draw[letter][dim]);
+			}
+		}
+	}
+}
+void draw_spikes(int x, int y) {
+	int numOfSpikes, dim;
+
+	for (numOfSpikes = 0; numOfSpikes < 3; numOfSpikes++) {
+		for (dim = 0; dim < SPIKE_DIM * SPIKE_DIM; dim++) {
+			if (spike[dim] == color2) {
+				plot_pixel(x + dim % SPIKE_DIM + SPIKE_DIM * numOfSpikes, y + dim / SPIKE_DIM, spike[dim]);
 			}
 		}
 	}

@@ -7,6 +7,7 @@
 extern const unsigned short number[][NUM_W * NUM_H];
 extern volatile int pixel_buffer_start;
 short int bg_color = (short int)0xFFFF;//Background color
+short int space_between_char = 2;
 void clear_screen(){
 	int x=0;
 	for(x;x<SCREEN_W;x++){
@@ -89,10 +90,49 @@ void wait_for_vsync(){
         status = *(pixel_ctrl_ptr + 3);
     }
 }
-void draw_number(int x, int y, int num) { // num must be between 0 - 9
+void draw_number(int x, int y, int num, _Bool bold) { // num must be between 0 - 9
 	int dim;
+	int t, boldedThickness;
 
-	for (dim = 0; dim < NUM_H * NUM_W; dim++) {
-		plot_pixel(x + dim % NUM_W, y + dim / NUM_W, number[num][dim]);
+	if (bold) {
+		boldedThickness = 3;
+	} else {
+		boldedThickness = 0;
+	}
+	for (t = 0; t <= boldedThickness; t++) {
+		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
+			if (number[num][dim] == color2) {
+				plot_pixel(x + dim % NUM_W + t, y + dim / NUM_W, number[num][dim]);
+			}
+		}
+	}
+}
+void draw_sequence(int x, int y, int num, _Bool bold) {
+	int numOfDigits = 0;
+	int boldThickness;
+
+	if (bold) {
+		boldThickness = 3;
+	} else {
+		boldThickness = 0;
+	}
+	while (num > 0) {
+		int digit = num % 10;
+
+		draw_number(x - (NUM_W + boldThickness) * numOfDigits - space_between_char * numOfDigits, y, digit, bold);
+
+		num = num / 10;
+		numOfDigits++;
+	}
+}
+void draw_start(int x, int y) {
+	int letter, dim;
+
+	for (letter = 0; letter < 5; letter++) {
+		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
+			if (start[letter][dim] == color2) {
+				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, start[letter][dim]);
+			}
+		}
 	}
 }

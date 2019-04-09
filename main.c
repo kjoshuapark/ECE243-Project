@@ -1,4 +1,5 @@
 #include "address_map_arm.h"
+#include "animation.h"
 #include "draw.h"
 #include<stdbool.h>
 
@@ -25,6 +26,7 @@ int main(void){
 	while(1){
 		clear_screen();
 		logic();
+		animate();
 		scene_draw();
 		wait_for_vsync();
 		pixel_buffer_start = *(pixel_ctrl_ptr + 1);

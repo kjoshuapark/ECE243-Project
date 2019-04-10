@@ -9,16 +9,16 @@ short int bg_color = (short int)0xFFFF;//Background color
 
 void clear_screen(){
 	int x=0;
-	for(x;x<SCREEN_W;x++){
+	for(;x<SCREEN_W;x++){
 		int y=0;
-		for(y;y<SCREEN_H;y++){
+		for(;y<SCREEN_H;y++){
 			plot_pixel(x, y, bg_color);
 		}
 	}
 }
 void fill_rectangle(int x,int y,int w,int h, short int color){
 	int nx=x;
-	for(nx;nx<(x+w);nx++){
+	for(;nx<(x+w);nx++){
 		draw_line(nx,y,nx,y+h-1,color);
 	}
 }
@@ -49,7 +49,7 @@ void draw_line(int x0, int y0, int x1,int y1, short int color){
 		y_step = -1;
 	}
 	int x=x0;
-	for(x;x<x1;x++){
+	for(;x<x1;x++){
 		if (is_steep){
 			plot_pixel(y, x, color);
 		}else{
@@ -141,7 +141,7 @@ void draw_go(int x, int y) {
 	for (letter = 0; letter < 2; letter++) {
 		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
 			if (go[letter][dim] == color2) {
-				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, go[letter][dim]);
+				plot_pixel(x + dim % NUM_W + SPACE_BETWEEN_CHAR * letter + NUM_W * letter, y + dim / NUM_W, go[letter][dim]);
 			}
 		}
 	}
@@ -152,7 +152,7 @@ void draw_win(int x, int y) {
 	for (letter = 0; letter < 3; letter++) {
 		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
 			if (win[letter][dim] == color2) {
-				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, win[letter][dim]);
+				plot_pixel(x + dim % NUM_W + SPACE_BETWEEN_CHAR * letter + NUM_W * letter, y + dim / NUM_W, win[letter][dim]);
 			}
 		}
 	}
@@ -163,7 +163,7 @@ void draw_lose(int x, int y) {
 	for (letter = 0; letter < 4; letter++) {
 		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
 			if (lose[letter][dim] == color2) {
-				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, lose[letter][dim]);
+				plot_pixel(x + dim % NUM_W + SPACE_BETWEEN_CHAR * letter + NUM_W * letter, y + dim / NUM_W, lose[letter][dim]);
 			}
 		}
 	}
@@ -174,7 +174,7 @@ void draw_draw(int x, int y) {
 	for (letter = 0; letter < 4; letter++) {
 		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
 			if (draw[letter][dim] == color2) {
-				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, draw[letter][dim]);
+				plot_pixel(x + dim % NUM_W + SPACE_BETWEEN_CHAR * letter + NUM_W * letter, y + dim / NUM_W, draw[letter][dim]);
 			}
 		}
 	}

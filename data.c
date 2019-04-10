@@ -7,3 +7,6 @@ int p1_board[BOARD_ROWS][BOARD_COLS];
 int p2_board[BOARD_ROWS][BOARD_COLS]; 
 int p1_score = 0;
 int p2_score = 0;
+
+int t_minus = T_MINUS;
+int restart_t_minus = 0;

@@ -15,6 +15,7 @@
 #define SINGLE				1
 #define DUEL				2
 //Platform types
+
 #define TOTAL_TYPES			2
 #define NONE				0
 #define PLATFORM 			1

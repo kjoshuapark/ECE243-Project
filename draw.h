@@ -14,5 +14,10 @@ void fill_rectangle(int x,int y,int w,int h, short int color);
 void draw_number(int x, int y, int num, bool bold);
 void draw_sequence(int x, int y, int num, bool bold);
 void draw_start(int x, int y);
+void draw_go(int x, int y);
+void draw_win(int x, int y);
+void draw_lose(int x, int y);
+void draw_draw(int x, int y);
+void draw_spikes(int x, int y);
 
 #endif

@@ -135,3 +135,58 @@ void draw_start(int x, int y) {
 		}
 	}
 }
+void draw_go(int x, int y) {
+	int letter, dim;
+
+	for (letter = 0; letter < 2; letter++) {
+		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
+			if (go[letter][dim] == color2) {
+				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, go[letter][dim]);
+			}
+		}
+	}
+}
+void draw_win(int x, int y) {
+	int letter, dim;
+
+	for (letter = 0; letter < 3; letter++) {
+		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
+			if (win[letter][dim] == color2) {
+				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, win[letter][dim]);
+			}
+		}
+	}
+}
+void draw_lose(int x, int y) {
+	int letter, dim;
+
+	for (letter = 0; letter < 4; letter++) {
+		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
+			if (lose[letter][dim] == color2) {
+				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, lose[letter][dim]);
+			}
+		}
+	}
+}
+void draw_draw(int x, int y) {
+	int letter, dim;
+
+	for (letter = 0; letter < 4; letter++) {
+		for (dim = 0; dim < NUM_H * NUM_W; dim++) {
+			if (draw[letter][dim] == color2) {
+				plot_pixel(x + dim % NUM_W + space_between_char * letter + NUM_W * letter, y + dim / NUM_W, draw[letter][dim]);
+			}
+		}
+	}
+}
+void draw_spikes(int x, int y) {
+	int numOfSpikes, dim;
+
+	for (numOfSpikes = 0; numOfSpikes < 3; numOfSpikes++) {
+		for (dim = 0; dim < SPIKE_DIM * SPIKE_DIM; dim++) {
+			if (spike[dim] == color2) {
+				plot_pixel(x + dim % SPIKE_DIM + SPIKE_DIM * numOfSpikes, y + dim / SPIKE_DIM, spike[dim]);
+			}
+		}
+	}
+}

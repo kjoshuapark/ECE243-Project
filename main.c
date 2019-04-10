@@ -17,12 +17,12 @@ void setup_buffer();
 void scene_draw();
 void clear();
 void logic();
-void init_board();
+void init();
 int main(void){
 	setup_interupts();
 	setup_buffer();
 	
-	init_board();
+	init();
 	while(1){
 		clear_screen();
 		logic();
@@ -57,8 +57,7 @@ void setup_buffer(){
 void config_interval_timer(){
     volatile int * interval_timer_ptr =(int *)TIMER_BASE; // interal timer base address
 
-	float interval = 1/60; //60 FPS
-    int counter                 = interval * 100000000; // 1/(100 MHz) x 5x10^6 = 50 msec
+    int counter                 = 5000000; // 1/(100 MHz) x 5x10^6 = 50 msec
     *(interval_timer_ptr + 0x2) = (counter & 0xFFFF);
     *(interval_timer_ptr + 0x3) = (counter >> 16) & 0xFFFF;
 

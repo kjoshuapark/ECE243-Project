@@ -9,5 +9,7 @@
 #define BOARD_MOVE_SPEED 6
 void animate();
 void p1_move(int dir);
-
+void p1b_move(int dir);
+void p2_move(int dir);
+void p2b_move(int dir);
 #endif

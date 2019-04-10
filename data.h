@@ -10,6 +10,7 @@
 #define PLATFORM_H 			6
 #define P_V_INTERVAL		30
 #define SCORE_Y				10
+#define PLAYER_AT_ROW		1
 //Game modes
 #define SINGLE				1
 #define DUEL				2

@@ -10,7 +10,7 @@ extern int p2_board[BOARD_ROWS][BOARD_COLS];
 
 extern int p1_score;
 extern int p2_score;
-
+extern int p1_path_end;
 int p1_offset = 0;
 int p1b_offset = 0;
 
@@ -35,7 +35,7 @@ void scene_draw(){
 		draw_role(p1_center,p1_x,p1_offset);
 		draw_role(p2_center,p2_x,0);
 	}
-
+	draw_number(0,0,p1_path_end,true);
 }
 void draw_role(int center, int x, int x_offset){
 	int col_center = BOARD_COLS/2;

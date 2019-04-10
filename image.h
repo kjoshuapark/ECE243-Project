@@ -1,3 +1,6 @@
+#ifndef IMAGE_H
+#define IMAGE_H
+
 #include "data.h"
 
 // display characters on vga
@@ -367,6 +370,7 @@ const unsigned short start[5][NUM_W * NUM_H] = {
 		color1, color1, color1, color1, color1, color2, color2, color2, color1, color1, color1, color1, color1  // row 21, 273 pixels
 	}
  };
+ 
 const unsigned short go[2][NUM_W * NUM_H] = {
 	{
 		// G
@@ -698,3 +702,4 @@ const unsigned short spike[SPIKE_DIM * SPIKE_DIM] = {
 	color2, color2, color2, color2, color2, color2, color2, color2, // row 7,  56 pixels
 	color2, color2, color2, color2, color2, color2, color2, color2  // row 8,  64 pixels
 };
+ #endif

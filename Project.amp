@@ -19,7 +19,7 @@
             <source_file filepath="true">logic.c</source_file>
             <source_file filepath="true">data.c</source_file>
             <source_file filepath="true">scene.c</source_file>
-            <source_file filepath="true">image.c</source_file>
+            <source_file filepath="true">animation.c</source_file>
         </source_files>
         <options>
             <compiler_flags>-g -O1</compiler_flags>
